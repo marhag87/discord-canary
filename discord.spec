@@ -1,11 +1,12 @@
 Name:           discord-canary
-Version:        0.0.1
+Version:        0.0.2
 Release:        1%{?dist}
 Summary:        All-in-one voice and text chat
 
 License:        Copyright only
 URL:            https://discordapp.com
 Source0:        https://storage.googleapis.com/discord-developer/test/%{name}-%{version}.tar.gz
+AutoReqProv:    No
 
 # Don't build debug package
 %define debug_package %{nil}
@@ -32,5 +33,7 @@ ln -fs %{discorddir}/DiscordCanary %{buildroot}%{_bindir}/discord-canary
 %{_bindir}/discord-canary
 
 %changelog
+* Thu Mar 31 2016 Martin Hagstrom <marhag87@gmail.com> 0.0.2-1
+- Update to version 0.0.2
 * Thu Mar 31 2016 Martin Hagstrom <marhag87@gmail.com> 0.0.1-1
 - Initial release

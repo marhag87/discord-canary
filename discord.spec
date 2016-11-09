@@ -1,5 +1,5 @@
 Name:           discord-canary
-Version:        0.0.10
+Version:        0.0.11
 Release:        1%{?dist}
 Summary:        All-in-one voice and text chat
 
@@ -33,6 +33,8 @@ ln -fs %{discorddir}/DiscordCanary %{buildroot}%{_bindir}/discord-canary
 %{_bindir}/discord-canary
 
 %changelog
+* Wed Nov 09 2016 Martin Hagstrom <marhag87@gmail.com> 0.0.11-1
+- Update to version 0.0.11
 * Sat Nov 05 2016 Martin Hagstrom <marhag87@gmail.com> 0.0.10-1
 - Update to version 0.0.10
 * Wed Oct 19 2016 Martin Hagstrom <marhag87@gmail.com> 0.0.9-1

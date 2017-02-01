@@ -9,7 +9,7 @@ function getlatestversion() {
 }
 
 function getcurrentversion() {
-  awk '/^Version/ { print $2 }' discord.spec
+  awk '/^Version/ { print $2 }' discord-canary.spec
 }
 
 function update() {
@@ -24,7 +24,7 @@ function compareversions() {
   currentversion=$(getcurrentversion)
   if [[ $currentversion != $latestversion ]]; then
     if [[ $update == true ]]; then
-      update discord $latestversion
+      update discord-canary $latestversion
     else
       echo "Discord not up to date, latest version: ${latestversion}"
     fi

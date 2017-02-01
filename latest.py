@@ -1,6 +1,7 @@
 #!/bin/env python
 """Script that downloads the latest source for discord-canary"""
 
+import sys
 import json
 import requests as req
 
@@ -24,4 +25,7 @@ def download_latest():
             print("Downloaded discord-canary-%s.tar.gz" % version)
 
 if __name__ == '__main__':
-    download_latest()
+    if len(sys.argv) > 1 and sys.argv[1] == '-d':
+        download_latest()
+    else:
+        print(latest_version())

@@ -3,13 +3,18 @@
 # Written by Martin Hagström 2015-12-17
 
 update=false
+name=discord
 
 function getlatestversion() {
-  ./latest.py
+  if [[ $name == discord-canary ]]; then
+    ./latest.py -c
+  else
+    ./latest.py
+  fi
 }
 
 function getcurrentversion() {
-  awk '/^Version/ { print $2 }' discord-canary.spec
+  awk '/^Version/ { print $2 }' ${name}.spec
 }
 
 function update() {
@@ -24,18 +29,20 @@ function compareversions() {
   currentversion=$(getcurrentversion)
   if [[ $currentversion != $latestversion ]]; then
     if [[ $update == true ]]; then
-      update discord-canary $latestversion
+      update $name $latestversion
     else
-      echo "Discord not up to date, latest version: ${latestversion}"
+      echo "${name^} not up to date, latest version: ${latestversion}"
     fi
   fi
 }
 
-while getopts ":u" opt; do
+while getopts "uc" opt; do
   case $opt in
     u)
       update=true
-      shift
+      ;;
+    c)
+      name=discord-canary
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
